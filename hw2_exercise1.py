@@ -27,9 +27,9 @@ driver.find_element(By.ID, "ap_email")
 # Continue button, search by ID, "continue"
 driver.find_element(By.ID, "continue")
 # Conditions of use link, search by ID and LinkText
-driver.find_element(By.XPATH, "//*[@id='legalTextRow']//a[text()='Conditions of Use']")
+driver.find_element(By.XPATH, "//a[contains(@href, 'ap_signin_notification_condition_of_use')]")
 # Privacy Notice link
-driver.find_element(By.XPATH, "//*[@id='legalTextRow']//a[text()='Privacy Notice']")
+driver.find_element(By.XPATH, "//a[contains(@href, 'ap_signin_notification_privacy_notice')]")
 # Need help link, search by Class, "a-expander-prompt"
 driver.find_element(By.CLASS_NAME, "a-expander-prompt")
 # Forgot your password link , search by ID, "auth-fpp-link-bottom"
