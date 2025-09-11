@@ -30,6 +30,9 @@ sleep(3)
 
 # 4. Verify SignIn page opened:
 # “Sign in or create account” text is shown,
-driver.find_element(By.XPATH, "//*[text()='Sign in or create account']")
+expected_text = "Sign in or create account"
+actual_text = driver.find_element(By.XPATH, "//*[text()='Sign in or create account']").text
+assert expected_text == actual_text, f"Expected: {expected_text} did not match Actual: {actual_text}"
+
 # SignIn button is shown (you can just use driver.find_element() to check for element’s presence, no need to assert here)
 driver.find_element(By.XPATH, "//button[normalize-space()='Sign in with passkey']").click()
