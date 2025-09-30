@@ -3,18 +3,18 @@ Feature: Cart behavior
 
   Scenario: Verify empty cart message appears
     Given Open target main page
-    When User clicks on cart icon
+    When Click on cart icon
     Then Verify empty cart message appears
 
   Scenario Outline: HW 4.3 - User can add a product to the cart and verify it's there
     Examples:
       |product  |
-      |tv stand      |
+      |tea           |
     Given Open target main page
     When Search for a <product>
-    And First product in search results is added to cart
-    And Confirm product is added to cart
-    And User clicks on cart icon
+    And Click Add to cart on first product in search results
+    And Click Add to cart from side navigation
+    And Click on cart icon
     Then Verify <product> is added to cart
 
 
