@@ -9,7 +9,7 @@ Feature: Cart behavior
   Scenario Outline: HW 4.3 - User can add a product to the cart and verify it's there
     Examples:
       |product  |
-      |tea           |
+      |tv stand           |
     Given Open target main page
     When Search for a <product>
     And Click Add to cart on first product in search results

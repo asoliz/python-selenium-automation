@@ -4,7 +4,7 @@ from time import sleep
 
 ADD_TO_CART = (By.XPATH, '//button[@data-test="chooseOptionsButton"]')
 CONFIRM_TO_CART = (By.XPATH, '//button[@data-test="shippingButton"]')
-CLOSE_DRAWER = (By.XPATH, '//button[@aria-label="close"]')
+CLOSE_DRAWER = (By.CSS_SELECTOR, '[aria-label="close"]')
 PRODUCT_NAME = (By.CSS_SELECTOR, '[data-test="cartItem-title"]')
 
 
@@ -26,8 +26,8 @@ def confirm_is_added(context):
     sleep(3)
     context.driver.find_element(*CONFIRM_TO_CART).click()
     sleep(3)
-    element = context.driver.find_element(*CLOSE_DRAWER)
-    element.click()
+    elements = context.driver.find_elements(*CLOSE_DRAWER)
+    elements[1].click()
 
 
 @then('Verify {product_name} is added to cart')
