@@ -1,33 +1,34 @@
 from behave import when, then
 from selenium.webdriver.common.by import By
-from time import sleep
+from selenium.webdriver.support import expected_conditions as EC
 
 ADD_TO_CART = (By.XPATH, '//button[@data-test="chooseOptionsButton"]')
 CONFIRM_TO_CART = (By.XPATH, '//button[@data-test="shippingButton"]')
 CLOSE_DRAWER = (By.CSS_SELECTOR, '[aria-label="close"]')
 PRODUCT_NAME = (By.CSS_SELECTOR, '[data-test="cartItem-title"]')
+EMPTY_CART = (By.XPATH, '//div[@data-test="boxEmptyMsg"]')
+SEARCH_RESULTS = (By.XPATH, '//div[@data-test="lp-resultsCount"]')
 
 
 @then('Verify empty cart message appears')
 def verify_empty_cart_message(context):
     expected_cart_text = "Your cart is empty"
-    actual_cart_text = context.driver.find_element(By.CSS_SELECTOR, "[data-test='boxEmptyMsg']").text
+    actual_cart_text = context.driver.find_element(*EMPTY_CART).text
     assert expected_cart_text == actual_cart_text, f"Error: Expected text {expected_cart_text} but got {actual_cart_text}"
 
 
 @when('Click Add to cart on first product in search results')
 def first_product_is_added(context):
-    sleep(7)
+    context.driver.wait.until(
+        EC.presence_of_element_located(SEARCH_RESULTS),
+        message="Search results did not load")
     context.driver.find_element(*ADD_TO_CART).click()
 
 
 @when('Click Add to cart from side navigation')
 def confirm_is_added(context):
-    sleep(3)
     context.driver.find_element(*CONFIRM_TO_CART).click()
-    sleep(3)
-    elements = context.driver.find_elements(*CLOSE_DRAWER)
-    elements[1].click()
+    context.driver.find_element(*CLOSE_DRAWER).click()
 
 
 @then('Verify {product_name} is added to cart')

@@ -1,6 +1,5 @@
 from behave import given, when, then
 from selenium.webdriver.common.by import By
-from time import sleep
 
 SEARCH_RESULTS_TXT = (By.XPATH, "//div[@data-test='lp-resultsCount']")
 

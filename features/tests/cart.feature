@@ -6,16 +6,13 @@ Feature: Cart behavior
     When Click on cart icon
     Then Verify empty cart message appears
 
-  Scenario Outline: HW 4.3 - User can add a product to the cart and verify it's there
-    Examples:
-      |product  |
-      |tv stand           |
+  Scenario: User can add a product to the cart and verify
     Given Open target main page
-    When Search for a <product>
+    When Search for a chair
     And Click Add to cart on first product in search results
     And Click Add to cart from side navigation
     And Click on cart icon
-    Then Verify <product> is added to cart
+    Then Verify chair is added to cart
 
 
   # Create a test case to add any Target’s product into the cart, and make sure it’s

@@ -1,6 +1,5 @@
 from behave import given, when, then
 from selenium.webdriver.common.by import By
-from time import sleep
 
 HELP_TITLE = (By.XPATH, "//h1[text()='Help']")
 HAVE_A_QUESTION_TEXT = (By.XPATH, "//h1[text()='Have a question?']")
@@ -9,7 +8,6 @@ HAVE_A_QUESTION_TEXT = (By.XPATH, "//h1[text()='Have a question?']")
 @given('Open target help page')
 def open_main(context):
     context.driver.get('https://help.target.com/help')
-    sleep(3)
 
 
 # @then('Verify these UI elements are present of the page')

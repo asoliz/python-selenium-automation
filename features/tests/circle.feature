@@ -3,7 +3,7 @@ Feature: UI test to verify that Circle page displays benefits
 
   # Create a test case that will open the Target Circle page
   #https://www.target.com/circle, and verify there are at least 10 benefit cells
-  Scenario: HW 4.2 - User is able to see the Target Circle Benefits
+  Scenario: User is able to see the Target Circle Benefits
     Given Open Target Circle page
     Then Verify at least 10 benefit cells display
 
