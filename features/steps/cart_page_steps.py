@@ -6,16 +6,13 @@ ADD_TO_CART = (By.XPATH, '//button[@data-test="chooseOptionsButton"]')
 CONFIRM_TO_CART = (By.XPATH, '//button[@data-test="shippingButton"]')
 CLOSE_DRAWER = (By.CSS_SELECTOR, '[aria-label="close"]')
 PRODUCT_NAME = (By.CSS_SELECTOR, '[data-test="cartItem-title"]')
-EMPTY_CART = (By.XPATH, '//div[@data-test="boxEmptyMsg"]')
+
 SEARCH_RESULTS = (By.XPATH, '//div[@data-test="lp-resultsCount"]')
 
 
 @then('Verify empty cart message appears')
 def verify_empty_cart_message(context):
-    expected_cart_text = "Your cart is empty"
-    actual_cart_text = context.driver.find_element(*EMPTY_CART).text
-    assert expected_cart_text == actual_cart_text, f"Error: Expected text {expected_cart_text} but got {actual_cart_text}"
-
+    context.app.cart_page.verify_empty_cart_message()
 
 @when('Click Add to cart on first product in search results')
 def first_product_is_added(context):

@@ -1,10 +1,10 @@
+from time import sleep
+
 from behave import given, when, then
 from selenium.webdriver.common.by import By
 
 ACCOUNT_BUTTON = (By.ID, "account-sign-in")
-SEARCH_FIELD = (By.ID, "search")
-SEARCH_BUTTON = (By.XPATH, "//button[@data-test='@web/Search/SearchButton']")
-CART_ICON = (By.XPATH, "//a[@data-test='@web/CartLink']")
+
 SIGNIN_BUTTON = (By.XPATH, "//*[@data-test='accountNav-signIn']")
 
 
@@ -18,13 +18,11 @@ def click_sign_in(context):
     context.driver.find_element(*SIGNIN_BUTTON).click()
 
 
-@when('Search for a {search_word}')
+@when('Search for {search_word}')
 def search_product(context, search_word):
-    context.driver.find_element(*SEARCH_FIELD).send_keys({search_word})
-    context.driver.find_element(*SEARCH_BUTTON).click()
-
+    context.app.header.search_product(search_word)
 
 
 @when('Click on cart icon')
 def click_cart_icon(context):
-    context.driver.find_element(*CART_ICON).click()
+    context.app.header.click_cart_icon()

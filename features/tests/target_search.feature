@@ -2,12 +2,14 @@
 Feature: Search capability
 
   # Update Target product search test case and add Behave variables.
-  Scenario Outline: User can search for coffee in Target
-    Examples:
-      | product | expected_product |
-      | coffee  | coffee           |
+  Scenario: User can search for coffee in Target
     Given Open target main page
-    When Search for a <product>
-    Then Verify search results are shown for <expected_product>
+    When Search for tea
+    Then Verify search results are shown for tea
+
+  Scenario: Verify that user can see product names and images
+    Given Open target main page
+    When Search for AirPods
+    Then Verify that every product has a name and an image
 
 
