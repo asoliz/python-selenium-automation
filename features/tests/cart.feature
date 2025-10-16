@@ -8,7 +8,7 @@ Feature: Cart behavior
 
   Scenario: User can add a product to the cart and verify
     Given Open target main page
-    When Search for a chair
+    When Search for chair
     And Click Add to cart on first product in search results
     And Click Add to cart from side navigation
     And Click on cart icon

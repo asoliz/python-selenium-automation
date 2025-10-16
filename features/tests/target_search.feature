@@ -4,8 +4,8 @@ Feature: Search capability
   # Update Target product search test case and add Behave variables.
   Scenario: User can search for coffee in Target
     Given Open target main page
-    When Search for tea
-    Then Verify search results are shown for tea
+    When Search for coffee
+    Then Verify search results are shown for coffee
 
   Scenario: Verify that user can see product names and images
     Given Open target main page
