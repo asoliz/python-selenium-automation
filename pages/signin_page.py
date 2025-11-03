@@ -13,6 +13,7 @@ class SignInPage(Page):
     PASSWORD_FIELD = (By.CSS_SELECTOR, '[data-test="login-password"]')
     PASSWORD_SUBMIT_BUTTON = (By.XPATH, '//button[text()="Sign in with password"]')
     TOC_LINK = (By.XPATH, '//a[@aria-label="terms & conditions - opens in a new window"]')
+    WARNING_MESSAGE = (By.XPATH, '//div[contains(@class, "warning")]')
 
     def verify_sign_in_text(self):
         self.verify_text("Sign in or create account", *self.SIGNIN_TEXT)
@@ -20,14 +21,18 @@ class SignInPage(Page):
     def verify_sign_in_button(self):
         self.verify_element_exists(*self.SIGNIN_BUTTON)
 
-    def enter_email_then_submit(self, email):
+    def enter_email(self, email):
         self.input_text(email, *self.EMAIL_FIELD)
+
+    def clicks_submit_button_after_email(self):
         self.wait_until_clickable_then_click(*self.CONTINUE_BUTTON)
 
-    def enter_password_then_submit(self, password):
+    def enter_password(self, password):
         self.wait_until_clickable_then_click(*self.ENTER_PASSWORD_BUTTON)
         self.wait_until_element_appears(*self.PASSWORD_FIELD)
         self.input_text(password, *self.PASSWORD_FIELD)
+
+    def clicks_submit_button_after_password(self):
         self.wait_until_clickable_then_click(*self.PASSWORD_SUBMIT_BUTTON)
 
     def sign_in_successful(self):
@@ -39,5 +44,6 @@ class SignInPage(Page):
     def open_signin_page(self):
         self.open_url('https://www.target.com/')
 
-
-
+    def verify_warning_incorrectpw(self):
+        message = self.wait_until_element_appears(*self.WARNING_MESSAGE).text
+        assert message == 'That password is incorrect. Please try again.', f"{message} does not match expectation."

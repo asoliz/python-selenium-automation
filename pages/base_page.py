@@ -1,3 +1,4 @@
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -45,6 +46,12 @@ class Page:
         actual_text = self.driver.find_element(*locator).text
         assert expected_text == actual_text, \
             f"Error- Expected text '{expected_text}', but got '{actual_text}'"
+
+    def hover_element(self, *locator):
+        element = self.driver.find_element(*locator)
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element)
+        actions.perform()
 
     def verify_partial_text(self, expected_partial_text, *locator):
         actual_text = self.driver.find_element(*locator).text

@@ -8,6 +8,7 @@ from pages.signin_page import SignInPage
 from pages.main_page import MainPage
 from pages.search_results_page import SearchResultsPage
 from pages.target_app_page import TargetAppPage
+from pages.target_returns_page import TargetReturnsPage
 
 
 class Application:
@@ -26,3 +27,4 @@ class Application:
         self.side_navigation = SideNavigation(driver)
         self.target_app_page = TargetAppPage(driver)
         self.privacy_policy_page = PrivacyPolicyPage(driver)
+        self.target_returns_page = TargetReturnsPage(driver)

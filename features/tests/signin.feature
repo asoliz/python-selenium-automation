@@ -13,5 +13,18 @@ Feature: Log In / Out experience
     When User clicks on Account button
     When User clicks on Sign In icon
     When User enters email porrporr@dipan.xyz
+    And User selects to continue after email entry
     When User enters password RichyRich098
+    And User selects to submit after password entry
     Then Verify sign in is successful
+
+  Scenario: Error message appears for incorrect fields
+    Given Open target main page
+    When User clicks on Account button
+    And User clicks on Sign In icon
+    And User enters email porrporr@dipan.xyz
+    And User selects to continue after email entry
+    And User enters password RichyRich0
+    And User selects to submit after password entry
+    Then Verify that incorrect password error message appears
+

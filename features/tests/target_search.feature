@@ -12,4 +12,8 @@ Feature: Search capability
     When Search for AirPods
     Then Verify that every product has a name and an image
 
-
+  Scenario: User can see favorites tooltip for search results
+    Given Open target main page
+    When Search for tea
+    And Hover favorites icon
+    Then Favorites tool tip is shown
