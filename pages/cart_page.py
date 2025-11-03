@@ -21,5 +21,6 @@ class CartPage(Page):
         # actual_result = context.driver.find_element(*PRODUCT_NAME).text
         # assert product_name in actual_result.lower(), f"Error: Expected {product_name} but got {actual_result}"
 
-
+    def verify_cart_page_opened(self):
+        self.wait_until_url_contains('/cart')
 

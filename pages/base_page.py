@@ -64,4 +64,19 @@ class Page:
     def verify_element_exists(self, *locator):
         return self.driver.find_element(*locator).is_displayed()
 
+    def get_original_window(self):
+        return self.driver.current_window_handle
 
+    def switch_to_newly_opened_window(self, old_windows):
+        self.wait.until(EC.new_window_is_opened(old_windows))
+        current_windows = self.driver.window_handles
+        print('Current windows after link click: ', current_windows)
+        print('Switching to window: ', current_windows[1])
+        self.driver.switch_to.window(current_windows[1])
+
+    def switch_to_window_by_id(self, window_id):
+        print('Switching to window: ', window_id)
+        self.driver.switch_to.window(window_id)
+
+    def close(self):
+        self.driver.close()
